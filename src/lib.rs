@@ -18,9 +18,12 @@ cfg_if! {
 }
 
 #[wasm_bindgen]
-pub fn ogp_image() -> Vec<u8> {
-    let font = Vec::from(include_bytes!("../font/DejaVuSans.ttf") as &[u8]);
-    let font = Font::try_from_vec(font).unwrap();
+pub fn ogp_image(font: &[u8]) -> Vec<u8> {
+    //let mut v = Vec::new();
+    //v.push(font[0]);
+    //return v;
+    //let font = Vec::from(include_bytes!("../font/DejaVuSans.ttf") as &[u8]);
+    let font = Font::try_from_bytes(font).unwrap();
 
     let height = 12.4;
     let scale = Scale {
@@ -36,7 +39,7 @@ pub fn ogp_image() -> Vec<u8> {
         0,
         scale,
         &font,
-        "hello",
+        "ハロ〜",
     );
 
     let image = image::DynamicImage::ImageRgb8(image);
