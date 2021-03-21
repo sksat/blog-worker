@@ -4,7 +4,7 @@ use cfg_if::cfg_if;
 use wasm_bindgen::prelude::*;
 
 use image::{Rgb, RgbImage};
-use imageproc::drawing::draw_text_mut;
+use imageproc::{drawing, rect};
 use rusttype::{Font, Scale};
 
 cfg_if! {
@@ -28,18 +28,23 @@ pub fn ogp_image(font: &[u8]) -> Vec<u8> {
     let height = 12.4;
     let scale = Scale {
         x: height * 2.0,
-        y: height,
+        y: height * 2.0,
     };
 
     let mut image = RgbImage::new(200, 200);
-    draw_text_mut(
+    drawing::draw_filled_rect_mut(
+        &mut image,
+        rect::Rect::at(0, 0).of_size(200, 200),
+        Rgb([255u8, 255u8, 255u8]),
+    );
+    drawing::draw_text_mut(
         &mut image,
         Rgb([0u8, 0u8, 255u8]),
-        0,
-        0,
+        10,
+        10,
         scale,
         &font,
-        "ハロ〜",
+        "お〜じ〜ぴ〜",
     );
 
     let image = image::DynamicImage::ImageRgb8(image);
