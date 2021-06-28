@@ -13,7 +13,7 @@ default = ["console_error_panic_hook"]
 [dependencies]
 cfg-if = "0.1.10"
 #wasm-bindgen = "=0.2.65"
-wasm-bindgen = "0.2.70"
+wasm-bindgen = "0.2.74"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
 # logging them with `console.error`. This is great for development, but requires
