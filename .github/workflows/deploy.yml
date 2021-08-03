@@ -4,11 +4,19 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'src/**'
+      - 'worker/**'
+      - 'wrangler.toml'
+      - 'Cargo.toml'
+      - 'Cargo.lock'
+      - 'rust-toolchain'
+      - .github/workflows/deploy.yml
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Deploy
+    name: Deploy to Cloudflare with wrangler
     steps:
       - uses: actions/checkout@v2
       - name: Publish
