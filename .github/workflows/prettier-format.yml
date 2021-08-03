@@ -1,7 +1,8 @@
 name: Prettier Format
 
 on:
-  pull_request:
+  push:
+    branches-ignore: master
     paths:
       - 'worker/**'
       - '.github/workflows/prettier-format.yml'
@@ -12,9 +13,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          # Make sure the actual branch is checked out when running on pull requests
-          ref: ${{ github.head_ref }}
 
       - name: prettier
         uses: creyD/prettier_action@v3.3
