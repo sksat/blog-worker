@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'worker/**'
+      - '.github/workflows/prettier-format.yml'
 
 jobs:
   prettier:
