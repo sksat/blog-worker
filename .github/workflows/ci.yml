@@ -6,10 +6,10 @@ on:
       - 'src/**'
       - 'Cargo.toml'
       - 'Cargo.lock'
-      - '.github/workflows/**'
+      - '.github/workflows/ci.yml'
 
 jobs:
-  build:
+  clippy:
     runs-on: ubuntu-latest
 
     steps:
