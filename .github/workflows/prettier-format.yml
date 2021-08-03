@@ -1,0 +1,23 @@
+name: Prettier Format
+
+on:
+  push:
+    branches-ignore: master
+    paths:
+      - 'worker/**'
+      - '.github/workflows/prettier-format.yml'
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: prettier
+        uses: creyD/prettier_action@v3.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          prettier_options: --write worker/*.{json,js}
+          commit_message: "format: prettier"
